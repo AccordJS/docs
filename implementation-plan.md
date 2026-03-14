@@ -37,26 +37,24 @@ src/
     └── index.astro   # Homepage
 ```
 
-### 2. TailwindCSS & DaisyUI Setup
-**Install TailwindCSS and DaisyUI:**
+### 2. TailwindCSS v4 & DaisyUI v5 Setup (Astro 6 Compatible)
+**Install TailwindCSS v4 and DaisyUI v5 (modern approach):**
 ```bash
-bun add @astrojs/tailwind tailwindcss daisyui
+bun add tailwindcss @tailwindcss/vite daisyui
 bun add -D @tailwindcss/typography
 ```
 
-**Update `astro.config.mjs`:**
+**Update `astro.config.mjs` with Vite plugin:**
 ```js
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
-import tailwind from '@astrojs/tailwind';
+import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  integrations: [
-    react(),
-    tailwind({
-      applyBaseStyles: false, // Let DaisyUI handle base styles
-    })
-  ],
+  integrations: [react()],
+  vite: {
+    plugins: [tailwindcss()],
+  },
   output: 'static',
   site: 'https://accordjs.github.io',
   base: '/docs', // GitHub Pages repository path
@@ -66,58 +64,35 @@ export default defineConfig({
 });
 ```
 
-**Create `tailwind.config.mjs`:**
-```js
-/** @type {import('tailwindcss').Config} */
-export default {
-  content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
-  theme: {
-    extend: {
-      fontFamily: {
-        'mono': ['JetBrains Mono', 'Fira Code', 'Consolas', 'monospace'],
-      },
-      colors: {
-        'accent-purple': '#8b5cf6',
-        'accent-blue': '#3b82f6',
-      }
-    },
-  },
-  plugins: [
-    require('daisyui'),
-    require('@tailwindcss/typography'),
-  ],
-  daisyui: {
-    themes: [
-      {
-        light: {
-          ...require("daisyui/src/theming/themes")["light"],
-          primary: "#3b82f6",
-          secondary: "#8b5cf6",
-          accent: "#06b6d4",
-        },
-      },
-      {
-        dark: {
-          ...require("daisyui/src/theming/themes")["dark"],
-          primary: "#60a5fa",
-          secondary: "#a78bfa",
-          accent: "#22d3ee",
-        },
-      },
-    ],
-    darkTheme: "dark",
-    base: true,
-    styled: true,
-    utils: true,
-  },
-}
-```
-
-**Create global styles `src/styles/global.css`:**
+**Create `src/styles/global.css` (Tailwind v4 CSS-first approach):**
 ```css
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: light --default, dark --prefersdark;
+
+  /* Custom theme configuration */
+  theme: {
+    light: {
+      primary: #3b82f6;
+      secondary: #8b5cf6;
+      accent: #06b6d4;
+    }
+    dark: {
+      primary: #60a5fa;
+      secondary: #a78bfa;
+      accent: #22d3ee;
+    }
+  }
+}
+
+@plugin "@tailwindcss/typography";
+
+/* Custom theme tokens for Tailwind v4 */
+@theme {
+  --font-family-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+  --color-accent-purple: #8b5cf6;
+  --color-accent-blue: #3b82f6;
+}
 
 /* Custom components inspired by Next.js styling */
 @layer components {
@@ -134,6 +109,22 @@ export default {
   }
 }
 ```
+
+**Import CSS in Layout.astro:**
+```astro
+---
+// src/layouts/Layout.astro
+import '../styles/global.css';
+---
+```
+
+**⚠️ Important Migration Notes:**
+- **Removed**: `@astrojs/tailwind` integration (deprecated for Tailwind v4)
+- **Removed**: `tailwind.config.mjs` file (replaced with CSS-first configuration)
+- **Removed**: `require()` statements (no longer compatible with Tailwind v4)
+- **Added**: `@tailwindcss/vite` plugin (official Vite plugin for Tailwind v4)
+- **Added**: CSS-based configuration using `@import`, `@plugin`, and `@theme` directives
+- **Compatible**: With Astro 6, Tailwind CSS v4, and DaisyUI v5 (2025 stack)
 
 ### 3. TypeScript Configuration
 **Update `tsconfig.json`:**
@@ -457,25 +448,27 @@ src/
 - Tutorial video content for YouTube
 
 ## Key Decisions Made
-✅ **Design**: Next.js layout inspiration with TailwindCSS + DaisyUI
+✅ **Design**: Next.js layout inspiration with TailwindCSS v4 + DaisyUI v5
 ✅ **Priority**: Marketing homepage first
 ✅ **Timeline**: 48 hours
-✅ **Tech Stack**: Astro + React + TailwindCSS + DaisyUI + Biome
+✅ **Tech Stack**: Astro 6 + React + TailwindCSS v4 + DaisyUI v5 + Biome (2025 modern stack)
 ✅ **Deployment**: GitHub Pages (accordjs.github.io/docs)
 ✅ **Branding**: Logo assets provided, tagline: "Typed. Modular. Discord bots done right."
 ✅ **Content Strategy**: Placeholder examples until npm module ready
 ✅ **Social Media**: Full social platform strategy (GitHub, Discord, X, Reddit, Facebook, LinkedIn, YouTube, Dev.to)
 ✅ **Blog Content**: First blog post "What is AccordJS" ready for implementation
+✅ **Updated Setup**: Fixed Tailwind/DaisyUI configuration for Astro 6 compatibility (deprecated `@astrojs/tailwind` replaced with `@tailwindcss/vite`)
 
 ## Implementation Ready ✅
 All key decisions made - ready to start development!
 
 ## Next Steps for Implementation
-1. **Start with Phase 1 setup** (React + TailwindCSS + DaisyUI)
+1. **Start with Phase 1 setup** (React + TailwindCSS v4 + DaisyUI v5 using modern Vite plugin)
 2. **Run `bun check` after each major step** to ensure type safety
 3. **Test locally with `bun dev`** throughout development
 4. **Focus on mobile-first responsive design**
 5. **Keep components modular and reusable**
+6. **Note**: Use the updated installation command: `bun add tailwindcss @tailwindcss/vite daisyui`
 
 ## File Structure After Setup
 ```

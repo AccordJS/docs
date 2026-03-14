@@ -1,7 +1,3 @@
-# What is AccordJS?
-
-*This is the content for the first blog post to be integrated into the site*
-
 ---
 title: "What is AccordJS?"
 description: "Introducing AccordJS - a type-safe, modular Discord bot framework that puts developer experience first"
@@ -9,6 +5,8 @@ author: "AccordJS Team"
 publishDate: 2026-03-14
 tags: ["discord", "typescript", "framework", "bots"]
 ---
+
+*This is the content for the first blog post to be integrated into the site*
 
 # What is AccordJS?
 
