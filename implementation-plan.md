@@ -67,22 +67,34 @@ export default defineConfig({
 **Create `src/styles/global.css` (Tailwind v4 CSS-first approach):**
 ```css
 @import "tailwindcss";
+
+/* DaisyUI v5 configuration with enabled themes */
 @plugin "daisyui" {
   themes: light --default, dark --prefersdark;
+}
 
-  /* Custom theme configuration */
-  theme: {
-    light: {
-      primary: #3b82f6;
-      secondary: #8b5cf6;
-      accent: #06b6d4;
-    }
-    dark: {
-      primary: #60a5fa;
-      secondary: #a78bfa;
-      accent: #22d3ee;
-    }
-  }
+/* Custom light theme configuration using DaisyUI v5 syntax */
+@plugin "daisyui/theme" {
+  name: "light";
+  color-scheme: light;
+  --color-primary: oklch(56% 0.18 237);        /* #3b82f6 */
+  --color-primary-content: oklch(98% 0.01 237);
+  --color-secondary: oklch(64% 0.21 299);      /* #8b5cf6 */
+  --color-secondary-content: oklch(98% 0.01 299);
+  --color-accent: oklch(61% 0.15 196);         /* #06b6d4 */
+  --color-accent-content: oklch(98% 0.01 196);
+}
+
+/* Custom dark theme configuration using DaisyUI v5 syntax */
+@plugin "daisyui/theme" {
+  name: "dark";
+  color-scheme: dark;
+  --color-primary: oklch(70% 0.15 237);        /* #60a5fa */
+  --color-primary-content: oklch(20% 0.01 237);
+  --color-secondary: oklch(75% 0.18 299);      /* #a78bfa */
+  --color-secondary-content: oklch(20% 0.01 299);
+  --color-accent: oklch(74% 0.12 196);         /* #22d3ee */
+  --color-accent-content: oklch(20% 0.01 196);
 }
 
 @plugin "@tailwindcss/typography";
@@ -124,7 +136,14 @@ import '../styles/global.css';
 - **Removed**: `require()` statements (no longer compatible with Tailwind v4)
 - **Added**: `@tailwindcss/vite` plugin (official Vite plugin for Tailwind v4)
 - **Added**: CSS-based configuration using `@import`, `@plugin`, and `@theme` directives
+- **DaisyUI v5**: Now uses separate `@plugin "daisyui/theme" {}` blocks for custom themes
+- **Theme Colors**: Uses OKLCH color format with `--color-*` CSS custom properties
 - **Compatible**: With Astro 6, Tailwind CSS v4, and DaisyUI v5 (2025 stack)
+
+**⚠️ DaisyUI v5 Syntax Changes:**
+- ❌ **Invalid**: `theme: { light: { primary: #color } }` inside `@plugin "daisyui" {}`
+- ✅ **Correct**: Separate `@plugin "daisyui/theme" {}` blocks with `--color-*` properties
+- ✅ **Modern**: OKLCH color format for better color consistency and accessibility
 
 ### 3. TypeScript Configuration
 **Update `tsconfig.json`:**
