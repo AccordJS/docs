@@ -149,7 +149,7 @@ bun add -D @biomejs/biome
 **Create `biome.json`:**
 ```json
 {
-  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.4.7/schema.json",
   "organizeImports": {
     "enabled": true
   },
@@ -170,10 +170,38 @@ bun add -D @biomejs/biome
     "indentStyle": "space",
     "indentWidth": 2
   },
+  "css": {
+    "formatter": {
+      "enabled": true
+    },
+    "linter": {
+      "enabled": true
+    },
+    "parser": {
+      "allowWrongLineComments": true
+    }
+  },
   "files": {
-    "include": ["src/**/*.{js,ts,jsx,tsx,astro}"],
+    "include": ["src/**/*.{js,ts,jsx,tsx,astro,css}"],
     "ignore": ["node_modules/**", "dist/**", ".astro/**"]
-  }
+  },
+  "overrides": [
+    {
+      "include": ["**/*.css"],
+      "css": {
+        "parser": {
+          "cssModules": false
+        },
+        "linter": {
+          "rules": {
+            "nursery": {
+              "useTailwindDirectives": "off"
+            }
+          }
+        }
+      }
+    }
+  ]
 }
 ```
 
