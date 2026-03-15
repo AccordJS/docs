@@ -1,0 +1,110 @@
+---
+import Layout from '@/layouts/Layout.astro';
+---
+
+<Layout title="AccordJS Examples - Discord Bot Code Samples">
+  <main class="min-h-screen bg-base-100">
+    <div class="container mx-auto px-4 py-16">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-4xl md:text-6xl font-bold text-primary mb-6">
+          Examples
+        </h1>
+        <p class="text-xl text-base-content/80 mb-8 max-w-2xl mx-auto">
+          Practical examples and code samples to help you build Discord bots with AccordJS.
+        </p>
+
+        <div class="bg-base-200 rounded-lg p-8 text-left mb-12">
+          <h2 class="text-2xl font-semibold mb-4 text-primary">Example Repository</h2>
+          <p class="text-base-content/80 mb-4">
+            Explore our comprehensive collection of AccordJS examples on GitHub, featuring
+            everything from basic bot setups to advanced plugin implementations.
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a
+              href="https://github.com/AccordJS/accord/tree/main/examples"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-primary"
+            >
+              Browse Examples on GitHub
+            </a>
+            <a
+              href="/docs"
+              class="btn btn-outline"
+            >
+              View Documentation
+            </a>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 text-left">
+          <div class="bg-base-200 rounded-lg p-6">
+            <h3 class="text-xl font-semibold mb-3 text-primary">Basic Bot</h3>
+            <p class="text-base-content/80 mb-4">
+              A simple Discord bot demonstrating core AccordJS concepts like event handling
+              and command registration.
+            </p>
+            <div class="flex gap-2">
+              <span class="badge badge-primary">TypeScript</span>
+              <span class="badge badge-outline">Beginner</span>
+            </div>
+          </div>
+
+          <div class="bg-base-200 rounded-lg p-6">
+            <h3 class="text-xl font-semibold mb-3 text-primary">Advanced Event Handling</h3>
+            <p class="text-base-content/80 mb-4">
+              Demonstrates AccordJS's powerful event system with custom event types,
+              event normalization, and event bus patterns.
+            </p>
+            <div class="flex gap-2">
+              <span class="badge badge-primary">TypeScript</span>
+              <span class="badge badge-outline">Intermediate</span>
+            </div>
+          </div>
+
+          <div class="bg-base-200 rounded-lg p-6">
+            <h3 class="text-xl font-semibold mb-3 text-primary">Plugin Development</h3>
+            <p class="text-base-content/80 mb-4">
+              Learn how to create custom plugins for AccordJS with this comprehensive
+              example showing plugin architecture and lifecycle management.
+            </p>
+            <div class="flex gap-2">
+              <span class="badge badge-primary">TypeScript</span>
+              <span class="badge badge-outline">Advanced</span>
+            </div>
+          </div>
+
+          <div class="bg-base-200 rounded-lg p-6">
+            <h3 class="text-xl font-semibold mb-3 text-primary">Analytics Integration</h3>
+            <p class="text-base-content/80 mb-4">
+              Example showcasing AccordJS's built-in analytics capabilities for tracking
+              bot usage, performance metrics, and user interactions.
+            </p>
+            <div class="flex gap-2">
+              <span class="badge badge-primary">TypeScript</span>
+              <span class="badge badge-outline">Intermediate</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-12 bg-base-200 rounded-lg p-6 text-left">
+          <h3 class="text-xl font-semibold mb-3 text-primary">Quick Start Template</h3>
+          <p class="text-base-content/80 mb-4">
+            Get started immediately with our bot template repository:
+          </p>
+          <div class="bg-base-300 rounded p-4 font-mono text-sm overflow-x-auto">
+            <code>
+              npx create-accordjs-bot my-discord-bot<br />
+              cd my-discord-bot<br />
+              npm start
+            </code>
+          </div>
+          <p class="text-sm text-base-content/60 mt-2">
+            * Template coming soon with the AccordJS framework release
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

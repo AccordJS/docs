@@ -96,8 +96,12 @@ bot.events.subscribe('MESSAGE_CREATE', (event: MessageCreateEvent) => {
 
                     <div className="bg-base-100 rounded-lg overflow-hidden shadow-lg">
                         <div className="bg-base-300 px-4 sm:px-6 py-3 sm:py-4 border-b border-base-content/20">
-                            <h3 className="text-base sm:text-lg font-semibold text-base-content">{examples[activeTab].title}</h3>
-                            <p className="text-base-content/70 text-xs sm:text-sm mt-1">{examples[activeTab].description}</p>
+                            <h3 className="text-base sm:text-lg font-semibold text-base-content">
+                                {examples[activeTab].title}
+                            </h3>
+                            <p className="text-base-content/70 text-xs sm:text-sm mt-1">
+                                {examples[activeTab].description}
+                            </p>
                         </div>
                         <div className="p-3 sm:p-6">
                             <pre className="code-block text-xs sm:text-sm overflow-x-auto">

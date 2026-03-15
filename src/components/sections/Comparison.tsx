@@ -74,12 +74,17 @@ export default function Comparison() {
 
                     <div className="text-center mt-12">
                         <div className="bg-primary/10 border border-primary/20 rounded-lg p-6 inline-block">
-                            <h3 className="text-xl font-bold text-primary mb-2">Ready to make the switch?</h3>
+                            <h3 className="text-xl font-bold text-primary mb-2">Ready to get started?</h3>
                             <p className="text-base-content/80 mb-4">
-                                AccordJS provides migration guides and compatibility layers
+                                AccordJS makes Discord bot development simple and type-safe
                             </p>
-                            <a href="/docs/migration" className="btn btn-primary">
-                                Migration Guide
+                            <a
+                                href="https://github.com/AccordJS"
+                                className="btn btn-primary"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                View on GitHub
                             </a>
                         </div>
                     </div>

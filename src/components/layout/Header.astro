@@ -1,0 +1,40 @@
+---
+import MobileMenu from './MobileMenu';
+
+const navItems = [
+    { label: 'Home', href: '/' },
+    { label: 'Docs', href: '/docs' },
+    { label: 'Blog', href: '/blog' },
+    { label: 'Examples', href: '/examples' },
+    { label: 'GitHub', href: 'https://github.com/AccordJS/accord', external: true },
+];
+---
+
+<header class="bg-base-100 border-b border-base-300 relative">
+    <div class="container mx-auto px-4">
+        <div class="flex items-center justify-between h-16">
+            <div class="flex items-center space-x-2">
+                <img src="/accordjs-logo-big-no-bg.svg" alt="AccordJS" class="w-8 h-8" loading="lazy" />
+                <span class="text-lg sm:text-xl font-bold text-primary">AccordJS</span>
+            </div>
+
+            <!-- Desktop Navigation - Static, no hydration needed -->
+            <nav class="hidden md:flex items-center space-x-6">
+                {navItems.map((item) => (
+                    <a
+                        href={item.href}
+                        class="text-base-content hover:text-primary transition-colors"
+                        {...(item.external && { target: '_blank', rel: 'noopener noreferrer' })}
+                    >
+                        {item.label}
+                    </a>
+                ))}
+            </nav>
+
+            <!-- Mobile Navigation - Only hydrate on mobile screens -->
+            <div class="md:hidden">
+                <MobileMenu navItems={navItems} client:media="(max-width: 767px)" />
+            </div>
+        </div>
+    </div>
+</header>

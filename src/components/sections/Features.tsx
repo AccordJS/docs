@@ -51,8 +51,12 @@ export default function Features() {
                             className="bg-base-200 rounded-lg p-4 sm:p-6 hover:shadow-lg transition-shadow border border-base-300"
                         >
                             <div className="text-3xl sm:text-4xl mb-3 sm:mb-4">{feature.icon}</div>
-                            <h3 className="text-lg sm:text-xl font-bold text-base-content mb-2 sm:mb-3">{feature.title}</h3>
-                            <p className="text-sm sm:text-base text-base-content/70 leading-relaxed">{feature.description}</p>
+                            <h3 className="text-lg sm:text-xl font-bold text-base-content mb-2 sm:mb-3">
+                                {feature.title}
+                            </h3>
+                            <p className="text-sm sm:text-base text-base-content/70 leading-relaxed">
+                                {feature.description}
+                            </p>
                         </div>
                     ))}
                 </div>

@@ -1,7 +1,7 @@
 ---
 import '@/styles/global.css';
 import Footer from '@/components/layout/Footer';
-import Header from '@/components/layout/Header';
+import Header from '@/components/layout/Header.astro';
 
 interface Props {
   title: string;
@@ -73,10 +73,10 @@ const imageURL = new URL(image, Astro.site);
     <title>{title}</title>
   </head>
   <body class="bg-base-100 text-base-content">
-    <Header client:load />
+    <Header />
     <main>
       <slot />
     </main>
-    <Footer client:visible />
+    <Footer />
   </body>
 </html>
