@@ -21,14 +21,17 @@ export default function MobileMenu({ navItems }: MobileMenuProps) {
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 aria-label="Toggle navigation menu"
             >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg
+                    className="w-6 h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    role="img"
+                    aria-labelledby="menu-icon-title"
+                >
+                    <title id="menu-icon-title">{isMenuOpen ? 'Close menu' : 'Open menu'}</title>
                     {isMenuOpen ? (
-                        <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M6 18L18 6M6 6l12 12"
-                        />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                     ) : (
                         <path
                             strokeLinecap="round"
