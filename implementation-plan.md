@@ -68,33 +68,9 @@ export default defineConfig({
 ```css
 @import "tailwindcss";
 
-/* DaisyUI v5 configuration with enabled themes */
+/* DaisyUI v5 configuration - enable built-in themes from theme generator */
 @plugin "daisyui" {
-  themes: light --default, dark --prefersdark;
-}
-
-/* Custom light theme configuration using DaisyUI v5 syntax */
-@plugin "daisyui/theme" {
-  name: "light";
-  color-scheme: light;
-  --color-primary: oklch(56% 0.18 237);        /* #3b82f6 */
-  --color-primary-content: oklch(98% 0.01 237);
-  --color-secondary: oklch(64% 0.21 299);      /* #8b5cf6 */
-  --color-secondary-content: oklch(98% 0.01 299);
-  --color-accent: oklch(61% 0.15 196);         /* #06b6d4 */
-  --color-accent-content: oklch(98% 0.01 196);
-}
-
-/* Custom dark theme configuration using DaisyUI v5 syntax */
-@plugin "daisyui/theme" {
-  name: "dark";
-  color-scheme: dark;
-  --color-primary: oklch(70% 0.15 237);        /* #60a5fa */
-  --color-primary-content: oklch(20% 0.01 237);
-  --color-secondary: oklch(75% 0.18 299);      /* #a78bfa */
-  --color-secondary-content: oklch(20% 0.01 299);
-  --color-accent: oklch(74% 0.12 196);         /* #22d3ee */
-  --color-accent-content: oklch(20% 0.01 196);
+    themes: light, dark, night, dim, synthwave, retro, cyberpunk, valentine, halloween, garden, forest, aqua, lofi, pastel, fantasy, wireframe, black, luxury, dracula, cmyk, autumn, business, acid, lemonade, coffee, winter, emerald, corporate, sunset, nord;
 }
 
 @plugin "@tailwindcss/typography";
@@ -142,8 +118,9 @@ import '../styles/global.css';
 
 **⚠️ DaisyUI v5 Syntax Changes:**
 - ❌ **Invalid**: `theme: { light: { primary: #color } }` inside `@plugin "daisyui" {}`
-- ✅ **Correct**: Separate `@plugin "daisyui/theme" {}` blocks with `--color-*` properties
-- ✅ **Modern**: OKLCH color format for better color consistency and accessibility
+- ✅ **Correct**: Use built-in themes from DaisyUI theme generator: `themes: light, dark, night, etc.`
+- ✅ **Alternative**: Custom themes with separate `@plugin "daisyui/theme" {}` blocks (for future use)
+- ✅ **Theme Selection**: Individual themes rather than light/dark mode toggle (theme switching can be implemented later)
 
 ### 3. TypeScript Configuration
 **Update `tsconfig.json`:**
@@ -172,7 +149,7 @@ bun add -D @biomejs/biome
 **Create `biome.json`:**
 ```json
 {
-  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.4.7/schema.json",
   "organizeImports": {
     "enabled": true
   },
@@ -193,10 +170,38 @@ bun add -D @biomejs/biome
     "indentStyle": "space",
     "indentWidth": 2
   },
+  "css": {
+    "formatter": {
+      "enabled": true
+    },
+    "linter": {
+      "enabled": true
+    },
+    "parser": {
+      "allowWrongLineComments": true
+    }
+  },
   "files": {
-    "include": ["src/**/*.{js,ts,jsx,tsx,astro}"],
+    "include": ["src/**/*.{js,ts,jsx,tsx,astro,css}"],
     "ignore": ["node_modules/**", "dist/**", ".astro/**"]
-  }
+  },
+  "overrides": [
+    {
+      "include": ["**/*.css"],
+      "css": {
+        "parser": {
+          "cssModules": false
+        },
+        "linter": {
+          "rules": {
+            "nursery": {
+              "useTailwindDirectives": "off"
+            }
+          }
+        }
+      }
+    }
+  ]
 }
 ```
 
@@ -248,8 +253,9 @@ public/
 **Create base layout (`src/layouts/Layout.astro`):**
 - Header with navigation (inspired by Next.js clean layout)
 - Footer with links
-- Theme toggle (dark/light)
+- Theme selector (multiple DaisyUI themes - can be implemented later)
 - Mobile-responsive design
+- Default theme: "night" for dark, modern look
 
 **Navigation structure:**
 ```

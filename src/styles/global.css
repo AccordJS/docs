@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+/* DaisyUI v5 configuration - enable built-in themes including 'night' */
+@plugin "daisyui" {
+    themes: light, dark, night, dim, synthwave, retro, cyberpunk, valentine, halloween, garden, forest, aqua, lofi, pastel, fantasy, wireframe, black, luxury, dracula, cmyk, autumn, business, acid, lemonade, coffee, winter, emerald, corporate, sunset, nord;
+}
