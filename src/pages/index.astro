@@ -1,21 +1,16 @@
 ---
+import CodeExamples from '@/components/sections/CodeExamples';
+import Comparison from '@/components/sections/Comparison';
+import Features from '@/components/sections/Features';
+import GetStarted from '@/components/sections/GetStarted';
+import Hero from '@/components/sections/Hero';
 import Layout from '@/layouts/Layout.astro';
 ---
 
 <Layout title="AccordJS - Modern TypeScript Discord Bot Framework">
-  <main class="min-h-screen bg-base-100">
-    <div class="container mx-auto px-4 py-16">
-      <div class="text-center">
-        <h1 class="text-6xl font-bold text-primary mb-6">AccordJS</h1>
-        <p class="text-xl text-base-content mb-8 max-w-2xl mx-auto">
-          Build powerful Discord bots with TypeScript. Event-driven architecture,
-          plugin system, and type safety out of the box.
-        </p>
-        <div class="flex gap-4 justify-center">
-          <a href="/docs" class="btn btn-primary btn-lg">Get Started</a>
-          <a href="https://github.com/AccordJS/accord" class="btn btn-outline btn-lg">GitHub</a>
-        </div>
-      </div>
-    </div>
-  </main>
+  <Hero client:load />
+  <Features client:load />
+  <CodeExamples client:load />
+  <Comparison client:load />
+  <GetStarted client:load />
 </Layout>

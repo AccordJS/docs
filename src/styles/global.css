@@ -2,5 +2,30 @@
 
 /* DaisyUI v5 configuration - enable built-in themes including 'night' */
 @plugin "daisyui" {
-    themes: light, dark, night, dim, synthwave, retro, cyberpunk, valentine, halloween, garden, forest, aqua, lofi, pastel, fantasy, wireframe, black, luxury, dracula, cmyk, autumn, business, acid, lemonade, coffee, winter, emerald, corporate, sunset, nord;
+    themes:
+        light, dark, night, dim, synthwave, retro, cyberpunk, valentine, halloween, garden, forest, aqua, lofi, pastel, fantasy, wireframe, black, luxury, dracula, cmyk, autumn, business, acid, lemonade, coffee, winter, emerald, corporate, sunset, nord;
+}
+
+@plugin "@tailwindcss/typography";
+
+/* Custom theme tokens for Tailwind v4 */
+@theme {
+    --font-family-mono: "JetBrains Mono", "Fira Code", "Consolas", monospace;
+    --color-accent-purple: #8b5cf6;
+    --color-accent-blue: #3b82f6;
+}
+
+/* Custom components inspired by Next.js styling */
+@layer components {
+    .gradient-text {
+        @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
+    }
+
+    .code-block {
+        @apply bg-base-200 rounded-lg p-4 font-mono text-sm overflow-x-auto;
+    }
+
+    .section-padding {
+        @apply py-16 md:py-24;
+    }
 }

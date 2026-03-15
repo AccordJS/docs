@@ -1,5 +1,7 @@
 ---
 import '@/styles/global.css';
+import Footer from '@/components/layout/Footer';
+import Header from '@/components/layout/Header';
 
 interface Props {
   title: string;
@@ -25,6 +27,10 @@ const { title, description = 'AccordJS - Modern TypeScript Discord Bot Framework
     <title>{title}</title>
   </head>
   <body class="bg-base-100 text-base-content">
-    <slot />
+    <Header client:load />
+    <main>
+      <slot />
+    </main>
+    <Footer client:load />
   </body>
 </html>
